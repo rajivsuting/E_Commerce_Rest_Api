@@ -1,14 +1,18 @@
 package com.masai.ecom.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -42,6 +46,9 @@ public class Orders {
 	
     @Pattern(regexp = "^(Placed | Shipped | OutForDelivery | Delivered | Failed)")
     private String orderStatus;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrderedProductQuantity> products = new ArrayList<>();
     
     
 
