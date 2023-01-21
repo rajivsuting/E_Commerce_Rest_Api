@@ -1,34 +1,38 @@
 package com.masai.ecom.entity;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
-@AllArgsConstructor
-public class Cart {
+public class OrderedProductQuantity {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<ProductQuantity> products;
+	@ManyToOne
+	private Product product;
 	
-	private Double totalPrice;
+	private Integer quantity;
+
+	public OrderedProductQuantity(Product product, Integer quantity) {
+		super();
+
+		this.product = product;
+		this.quantity = quantity;
+	}
+	
+	
+	
 
 }
