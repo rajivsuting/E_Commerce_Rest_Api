@@ -23,9 +23,11 @@ public class Address {
 	private Integer id;
 	private String house_no;
 	
-	@Pattern(regexp="^[A-Za-z]+$", message =  "Please enter the correct street Name")
+	
 	private String street;
 	private String city;
+	
+	@Pattern(regexp="^[A-Za-z]+$", message =  "Please enter the correct state name")
 	private String state;
 	
 	@Pattern(regexp="^[0-9]+$", message = "Enter Pin Code")
